@@ -44,8 +44,8 @@ class db:
         update_to_send = formatted_data
         insert_data_query = """
         INSERT INTO data
-        (ip, mac, manufacterer, os, firmware, datetime)
-        VALUES ( %s, %s, %s, %s, %s )
+        (ip, mac, manufacterer, os, firmware, start_time, end_time)
+        VALUES ( %s, %s, %s, %s, %s, %s )
         """
 
         ###################################################################################################
