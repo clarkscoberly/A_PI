@@ -74,17 +74,22 @@ class Db:
         Takes information from get_information and prepares it to be sent to GUI
         """
         #                            TODO THIS STATEMENT MAY ME INCORRECT
-        get_data_query = f"SELECT * FROM data WHERE start_date < {timeframe}"
+        # get_data_query = f"SELECT * FROM data WHERE start_date < "
+        get_data_query = f"SELECT * FROM data"
         with self.connection.cursor() as cursor:
             cursor.execute(get_data_query)
             result = cursor.fetchall()
+
+
+            return self._format_info()
             
             # TODO send result to gui for population
 
-    def format_info(self):
+    def _format_info(self):
         """
         Takes a list of lists and formats them accordingly then returns a list of lists
         """
+        
         pass
 
 db = Db()
