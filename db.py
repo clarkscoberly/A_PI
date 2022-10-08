@@ -13,57 +13,72 @@ FIRMWARE = 4
 DATE_AND_TIME = 5
 
 
-# user = root
-# pass = Concat_@nine30
-# host = d
-def connect_db():
-    try:
-        with connect(
-            host= "127.0.0.1",
-            user=input("Enter username: "),
-            password=getpass("Enter password: "),
-        ) as connection:
-            print(connection)
+# user = A_PI
+# pass = T3@ms_ap1
+# host = 
 
-    except Error as e:
-        print(e)
+class db:
 
-def create_table():
-    create_movies_table_query = """
-    CREATE TABLE movies(
-        id INT AUTO_INCREMENT PRIMARY KEY,
-        title VARCHAR(100),
-        release_year YEAR(4),
-        genre VARCHAR(100),
-        collection_in_mil INT
-    )
-    """
-    with connection.cursor() as cursor:
-        cursor.execute(create_movies_table_query)
-        connection.commit()
+    def __init__(self):
+        self.connection = self.connect_db()
 
-def update_table(formatted_data):
-    """
-    Get formatted information and then send it to the database.
-    """
 
-    update_to_send = formatted_data
+    def connect_db(self):
+        try:
+            with connect(
+                host= "0.0.0.0:5555",
+                user=input("Enter username: "),
+                password=input("Enter password: "),
+            ) as connection:
+                print(connection)
+                return connection
 
-    pass
+        except Error as e:
+            print(e)
 
-def get_information():
-    pass
+    def update_table(self, formatted_data):
+        """
+        Get formatted information and then send it to the database.
+        """
 
-def send_info():
-    """
-    Takes information from get_information and prepares it to be sent to GUI
-    """
-    pass
+        update_to_send = formatted_data
+        insert_data_query = """
+        INSERT INTO data
+        (ip, mac, manufacterer, os, firmware, start_time, end_time)
+        VALUES ( %s, %s, %s, %s, %s, %s )
+        """
 
-def format_info():
-    """
-    Takes a list of lists and formats them accordingly then returns a list of lists
-    """
-    pass
+        ###################################################################################################
+        # The following is an example of the kind of formatted data that should be contained within formatted data.
+        reviewers_records = [
+            ("Chaitanya", "Baweja"),
+            ("Mary", "Cooper"),
+            ("John", "Wayne"),
+            ("Thomas", "Stoneman")
+        ]
+        ###################################################################################################
 
-connect_db()
+        with self.connection.cursor() as cursor:
+            cursor.executemany(insert_data_query, formatted_data)
+            self.connection.commit()
+            pass
+
+    def get_information(self):
+        """
+        Gets info from the scanner or from main after the data is no longer in .csv form 
+        """
+        pass
+
+    def send_info(self):
+        """
+        Takes information from get_information and prepares it to be sent to GUI
+        """
+        pass
+
+    def format_info(self):
+        """
+        Takes a list of lists and formats them accordingly then returns a list of lists
+        """
+        pass
+
+db = Db()
