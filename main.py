@@ -3,8 +3,8 @@ Created By: Clark Coberly, Dallin Sevy, Grant Holley
 Purpose: Hackathon Project
 We, ourselves wrote this code
 """
-import db as DB
-from gui import *
+from db import *
+# from gui import *
 from scanner import *
 from m_dict import *
 
@@ -23,7 +23,7 @@ def get_manufacturer(mac):
 
 
 def main():
-    db = DB()
+    DB = Db()
     clients = scan()
     # print("Available devices in the network:")
     # print("IP" + " "*18+"MAC")
@@ -34,7 +34,7 @@ def main():
         device = (client['ip'], client['mac'], manufacturer)
         device_info_list.append(device)
 
-    db.update_database()
+    DB.update_table(device_info_list)
 
 
         # print("{:16}    {}".format(client['ip'], client['mac'][:8]))

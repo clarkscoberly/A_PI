@@ -1,5 +1,5 @@
 from getpass import getpass
-from mysql.connector import connect, Error
+# from mysql.connector import connect, Error
 import scapy.all as scapy
 import argparse
 from datetime import date
@@ -21,7 +21,9 @@ DATE_AND_TIME = 5
 class Db:
 
     def __init__(self):
-        self.connection = self.connect_db()
+        # self.connection = self.connect_db()
+        print("connected")
+        pass
 
 
     def connect_db(self):
