@@ -4,15 +4,24 @@ Purpose: Hackathon Project
 We, ourselves wrote this code
 """
 import db as DB
-import gui as GUI
+from gui import *
 import scanner as SCANNER
+
+def main():
+    db = DB()
+    scanner = SCANNER()
+     
+if __name__ == "__main__":
+    main()
+
+
+
+
+
+
 
 # import scapy.all as scapy 
 # import argparse
-
-
-
-
 
 
 # def get_arguments():
@@ -50,11 +59,3 @@ import scanner as SCANNER
     
 # if __name__ == "__main__":
 #     main()
-def main():
-    db = DB()
-    gui = GUI()
-    scanner = SCANNER()
-    
-    
-if __name__ == "__main__":
-    main()
