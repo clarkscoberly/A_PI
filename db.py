@@ -81,4 +81,4 @@ class db:
         """
         pass
 
-db = db()
+db = Db()
