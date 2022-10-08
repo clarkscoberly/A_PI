@@ -5,12 +5,43 @@ We, ourselves wrote this code
 """
 import db as DB
 from gui import *
-import scanner as SCANNER
+from scanner import *
+from m_dict import *
+
+IP = 0
+MAC_ADDRESS = 1
+MANUFACTERER = 2
+OS = 3
+FIRMWARE = 4
+DATE_AND_TIME = 5
+
+def get_manufacturer(mac):
+    a_mac = mac.replace(":", "")
+    return mac_dict[a_mac.upper()]
+    # print(a_mac)
+
+
 
 def main():
     db = DB()
-    scanner = SCANNER()
+    clients = scan()
+    # print("Available devices in the network:")
+    # print("IP" + " "*18+"MAC")
+    device_info_list = []
+    for client in clients:
+        manufacturer = get_manufacturer(client['mac'][:8])
+        print(manufacturer)
+        device = (client['ip'], client['mac'], manufacturer)
+        device_info_list.append(device)
+
+    db.update_database()
+
+
+        # print("{:16}    {}".format(client['ip'], client['mac'][:8]))
      
+
+
+
 if __name__ == "__main__":
     main()
 

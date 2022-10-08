@@ -42,9 +42,6 @@ class Db:
         Get formatted information and then send it to the database.
         """
         
-        formatted_data = self.format_data(data)
-
-        update_to_send = formatted_data
         insert_data_query = """
         INSERT INTO data
         (ip, mac, manufacterer, os, firmware, start_time, end_time)
@@ -64,21 +61,8 @@ class Db:
         ###########################################################################################################
 
         with self.connection.cursor() as cursor:
-            cursor.executemany(insert_data_query, formatted_data)
+            cursor.executemany(insert_data_query, data)
             self.connection.commit()
-
-    def format_data(self):
-        """
-        Format data retrieved by scanner to be put into
-        """
-        pass
-
-    # def get_information(self, data): # TODO DATA IS NOT WRITTEN YET
-    #     """
-    #     Gets info from the scanner or from main after the data is no longer in .csv form 
-    #     """
-    #     self.send_info(data)
-    #     pass
 
     # TODO get query Selection
 

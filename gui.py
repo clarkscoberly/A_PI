@@ -110,7 +110,7 @@ class App(customtkinter.CTk):
 
         # ============ frame_right ============
 
-        self.radio_var = tkinter.IntVar(value=0)
+        # self.radio_var = tkinter.IntVar(value=0)
 
         # self.label_radio_group = customtkinter.CTkLabel(master=self.frame_right,
         #                                                 text="CTkRadioButton Group:")
@@ -162,17 +162,17 @@ class App(customtkinter.CTk):
         #                                              text="CTkCheckBox")
         # self.check_box_2.grid(row=6, column=1, pady=10, padx=20, sticky="w")
 
-        self.entry = customtkinter.CTkEntry(master=self.frame_right,
-                                            width=120,
-                                            placeholder_text="CTkEntry")
-        self.entry.grid(row=8, column=0, columnspan=2, pady=20, padx=20, sticky="we")
+        # self.entry = customtkinter.CTkEntry(master=self.frame_right,
+        #                                     width=120,
+        #                                     placeholder_text="CTkEntry")
+        # self.entry.grid(row=8, column=0, columnspan=2, pady=20, padx=20, sticky="we")
 
-        self.button_5 = customtkinter.CTkButton(master=self.frame_right,
-                                                text="CTkButton",
-                                                border_width=2,  # <- custom border_width
-                                                fg_color=None,  # <- no fg_color
-                                                command=self.button_event)
-        self.button_5.grid(row=8, column=2, columnspan=1, pady=20, padx=20, sticky="we")
+        # self.button_5 = customtkinter.CTkButton(master=self.frame_right,
+        #                                         text="CTkButton",
+        #                                         border_width=2,  # <- custom border_width
+        #                                         fg_color=None,  # <- no fg_color
+        #                                         command=self.button_event)
+        # self.button_5.grid(row=8, column=2, columnspan=1, pady=20, padx=20, sticky="we")
 
         # set default values
         self.optionmenu_1.set("Dark")
@@ -181,7 +181,7 @@ class App(customtkinter.CTk):
         # self.radio_button_1.select()
         # self.slider_1.set(0.2)
         # self.slider_2.set(0.7)
-        self.progressbar.set(0.5)
+        # self.progressbar.set(0.5)
         # self.switch_2.select()
         # self.radio_button_3.configure(state=tkinter.DISABLED)
         # self.check_box_1.configure(state=tkinter.DISABLED, text="CheckBox disabled")
