@@ -82,4 +82,4 @@ class Db:
 
             return result
 
-# db = Db()
+db = Db()

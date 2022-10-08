@@ -1,9 +1,9 @@
-
 from scapy.all import ARP, Ether, srp
+from m_dict import *
 
 def scan():
     # target_ip = "10.244.149.69"
-    target_ip = "10.9.160.115"
+    target_ip = "10.9.160.1/24"
     arp = ARP(pdst=target_ip)
 
     ether = Ether(dst="ff:ff:ff:ff:ff:ff")
@@ -17,8 +17,13 @@ def scan():
 
     return clients
 
+def get_manufacturer(mac):
+    a_mac = mac.replace(":", "")
+    return mac_dict[a_mac.upper()]
 
-    # print("Available devices in the network:")
-    # print("IP" + " "*18+"MAC")
-    # for client in clients:
-    #     print("{:16}    {}".format(client['ip'], client['mac']))
+
+# DEBUGGING
+# print("Available devices in the network:")
+# print("IP" + " "*18+"MAC")
+# for client in clients:
+#     print("{:16}    {}".format(client['ip'], client['mac']))
