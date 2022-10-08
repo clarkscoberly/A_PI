@@ -3,7 +3,7 @@ from m_dict import *
 
 def scan():
     # target_ip = "10.244.149.69"
-    target_ip = "10.9.160.1/24"
+    target_ip = "10.244.0.1/24"
     arp = ARP(pdst=target_ip)
 
     ether = Ether(dst="ff:ff:ff:ff:ff:ff")
@@ -19,7 +19,13 @@ def scan():
 
 def get_manufacturer(mac):
     a_mac = mac.replace(":", "")
-    return mac_dict[a_mac.upper()]
+
+    try:
+        thing = mac_dict[a_mac.upper()]
+    except:
+        return "Unknown"
+    else:
+        return thing
 
 
 # DEBUGGING

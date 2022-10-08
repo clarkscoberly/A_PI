@@ -1,4 +1,6 @@
 mac_dict = {"000000": "Officially Xerox",
+"EC63D7": "Intel Corporate",
+"147DDA": "Apple, Inc.",
 "000001": "SuperLAN-2U",
 "000002": "BBN (was internal usage only, no longer used)",
 "000003": "XEROX CORPORATION",

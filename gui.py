@@ -64,7 +64,7 @@ class App(customtkinter.CTk):
         self.button_3.grid(row=4, column=0, pady=10, padx=20)
         self.button_4 = customtkinter.CTkButton(master=self.frame_left,
                                                 text="Scan",
-                                                command=self.button_event)
+                                                command=self.scan_event)
         self.button_4.grid(row=7, column=0, pady=10, padx=20)
 
         self.label_mode = customtkinter.CTkLabel(master=self.frame_left, text="Appearance Mode:")
@@ -105,6 +105,9 @@ class App(customtkinter.CTk):
 
         # set default values
         self.optionmenu_1.set("Dark")
+
+    def scan_event(self):
+        do_scan()
 
     def button_event(self):
         

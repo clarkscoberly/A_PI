@@ -28,13 +28,14 @@ def get_information(timeframe):
         formatted_data += f"IP: {u_data['ip']:12}    |    Mac: {u_data['mac']:10}    |    Manufacturer: {u_data['manufacturer']:1} \n"
     return formatted_data
 
-
-def main():
+def do_scan():
     clients = scan()
-    gui = App()
-    gui.mainloop()
     for client in clients:
         compile_device_list(client)
+
+def main():
+    gui = App()
+    gui.mainloop()
 
 
 if __name__ == "__main__":
