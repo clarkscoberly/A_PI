@@ -17,7 +17,7 @@ DATE_AND_TIME = 5
 # pass = T3@ms_ap1
 # host = 
 
-class db:
+class Db:
 
     def __init__(self):
         self.connection = self.connect_db()
@@ -61,19 +61,25 @@ class db:
         with self.connection.cursor() as cursor:
             cursor.executemany(insert_data_query, formatted_data)
             self.connection.commit()
-            pass
 
-    def get_information(self):
+    def get_information(self, data): # TODO DATA IS NOT WRITTEN YET
         """
         Gets info from the scanner or from main after the data is no longer in .csv form 
         """
+        self.send_info(data)
         pass
 
-    def send_info(self):
+    def populate_information(self):
         """
         Takes information from get_information and prepares it to be sent to GUI
         """
-        pass
+        #                            TODO THIS STATEMENT MAY ME INCORRECT
+        get_data_query = f"SELECT * FROM data WHERE start_date < {timeframe}"
+        with self.connection.cursor() as cursor:
+            cursor.execute(get_data_query)
+            result = cursor.fetchall()
+            
+            # TODO send result to gui for population
 
     def format_info(self):
         """
