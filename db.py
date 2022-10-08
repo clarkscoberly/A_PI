@@ -25,7 +25,7 @@ class Db:
             print("connected")
 
 
-    def connect_db():
+    def connect_db(self):
         try:
             with connect(
                 host= "0.0.0.0:5555",
@@ -38,7 +38,7 @@ class Db:
         except Error as e:
             print(e)
 
-    def update_table(connection, data):
+    def update_table(self, data):
         """
         Get formatted information and then send it to the database.
         """
@@ -61,13 +61,13 @@ class Db:
         #
         ###########################################################################################################
 
-        with connection.cursor() as cursor:
+        with self.connection.cursor() as cursor:
             cursor.executemany(insert_data_query, data)
-            connection.commit()
+            self.connection.commit()
 
     # TODO get query Selection
 
-    def populate_information(connection, query_selection):
+    def populate_information(self, query_selection):
         """
         Prepares info from a query, returns result to GUI
         """
@@ -76,7 +76,7 @@ class Db:
         # TODO THIS MIGHT ALSO SELECT THE AUTOINCREMENT KEY IN WHICH CASE ALL THE NUMS ARE WRONG
         # where date(created_at) = CURDATE() - interval 7 day | <?
         get_data_query = f"SELECT * FROM data WHERE start_date = {current_date} - interval {query_selection} day"
-        with connection.cursor() as cursor:
+        with self.connection.cursor() as cursor:
             cursor.execute(get_data_query)
             result = cursor.fetchall()
 
